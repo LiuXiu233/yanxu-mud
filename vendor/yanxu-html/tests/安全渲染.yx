@@ -1,0 +1,35 @@
+引「../src/言序HTML.yx」为 HTML；
+引「标准:测试」为 测试；
+
+定 安全节点 为 HTML.元素（「a」，【HTML.属性（「href」，「/search?q=<言序>」），HTML.属性（「title」，「\"<&'」）】，【HTML.文字（「<script>alert('x')</script>」）】）；
+测试.相等（HTML.安全渲染（安全节点），「<a href=\"/search?q=&lt;言序&gt;\" title=\"&quot;&lt;&amp;&#39;\">&lt;script&gt;alert(&#39;x&#39;)&lt;/script&gt;</a>」）；
+
+测试.相等（HTML.原始（「<strong>可信</strong>」）.渲染（），「<strong>可信</strong>」）；
+测试.相等（HTML.元素（「input」，【HTML.属性（「disabled」，真），HTML.属性（「hidden」，假）】，【】）.渲染（），「<input disabled>」）；
+测试.相等（HTML.文档（HTML.元素（「html」，【】，【】））.渲染（），「<!doctype html>\n<html></html>」）；
+
+令 已拒绝属性：理 为 假；
+试 则
+    HTML.属性（「onload x」，「坏」）；
+救 所误 则
+    置 已拒绝属性 为 真；
+终
+测试.断言（已拒绝属性，「含空白的属性名必须被拒绝」）；
+
+令 已拒绝脚本：理 为 假；
+试 则
+    HTML.属性（「href」，「javascript:alert(1)」）；
+救 所误 则
+    置 已拒绝脚本 为 真；
+终
+测试.断言（已拒绝脚本，「javascript URL 必须被拒绝」）；
+
+令 已拒绝混淆：理 为 假；
+试 则
+    HTML.属性（「src」，「java\tscript:alert(1)」）；
+救 所误 则
+    置 已拒绝混淆 为 真；
+终
+测试.断言（已拒绝混淆，「含控制字符的 URL 必须被拒绝」）；
+
+测试.相等（HTML.属性（「href」，「https://yanxu.dev/docs」）.渲染（），「 href=\"https://yanxu.dev/docs\"」）；

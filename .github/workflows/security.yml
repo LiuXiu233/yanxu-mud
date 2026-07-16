@@ -1,0 +1,35 @@
+name: 安全检查
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  boundaries:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 提交元数据
+        run: bash scripts/check-history.sh
+      - name: 常见密钥形态
+        shell: bash
+        run: |
+          if git grep -nEI '(BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|gh[pousr]_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16})' -- ':!scripts/check-history.*'; then
+            echo '检测到疑似密钥。' >&2
+            exit 1
+          fi
+      - name: 权限与边界文件
+        shell: bash
+        run: |
+          test -s SECURITY.md
+          test -s docs/ARCHITECTURE.md
+          grep -q '^\[权限\]' 言序.toml

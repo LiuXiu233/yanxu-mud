@@ -1,0 +1,6 @@
+.yanxu/
+build/
+*.yxb
+*.yxp
+*.jsonl
+*.yjlog

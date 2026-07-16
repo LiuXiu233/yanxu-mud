@@ -1,0 +1,9 @@
+lock_version = 2
+manifest_checksum = "5ba37fa121f3a855dbee6effdd88f12a2b58211a4e3584b8b27e13ea1b6e75c2"
+target = "x86_64-pc-windows-msvc"
+generator = "1.1.6"
+package = []
+
+[root_dependencies]
+
+[root_dev_dependencies]

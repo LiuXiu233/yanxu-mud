@@ -1,0 +1,25 @@
+lock_version = 2
+manifest_checksum = "ef19eaf7fd06e85beb7b0f9ffa457b1a09f2b907dd241acb961757a36ba75dce"
+target = "x86_64-pc-windows-msvc"
+generator = "1.1.6"
+
+[root_dependencies]
+"言时" = "言时@0.1.0#13e245bbcadb-9069dcaf3ec24b76"
+
+[root_dev_dependencies]
+
+[[package]]
+id = "言时@0.1.0#13e245bbcadb-9069dcaf3ec24b76"
+name = "言时"
+version = "0.1.0"
+source = "git:https://github.com/yanxulang/yanxu-datetime.git"
+revision = "c36fefc789979a54c1aa1da4e6c35a90cbb3edd4"
+checksum = "9069dcaf3ec24b769bd2a7f935011f471173fbc1894475cb188942eb110dadcb"
+entry = "src/言时.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言时.yx"

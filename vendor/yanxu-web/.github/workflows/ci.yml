@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          repository: YanXuLang/yanxu
+          path: .yanxu
+          ref: 746490ad6e6875fe82451a0f1ed1b0fc00cb8a26 # yanxu 1.1.5
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          repository: YanXuLang/yanbao
+          path: .yanbao
+          ref: 7276968ef8c3c480d56e0570870963d4ae63ce2d # yanbao 0.2.0
+      - name: Build Yanxu 1.1.5
+        run: cargo build --manifest-path .yanxu/Cargo.toml --locked --bin yanxu
+      - name: Resolve, check and test
+        run: |
+          chmod +x .yanbao/yanbao
+          YANXU_BIN="$GITHUB_WORKSPACE/.yanxu/target/debug/yanxu" .yanbao/yanbao install --manifest-path .
+          .yanxu/target/debug/yanxu 查 src/言序Web.yx
+          .yanxu/target/debug/yanxu 试 tests --并发 1 --json
+          YANXU_BIN="$GITHUB_WORKSPACE/.yanxu/target/debug/yanxu" .yanbao/yanbao build --manifest-path . --release

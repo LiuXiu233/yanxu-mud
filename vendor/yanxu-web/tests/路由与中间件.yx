@@ -1,0 +1,60 @@
+引「../src/言序Web.yx」为 Web；
+引「包:yanxu-http」为 HTTP；
+引「包:yanxu-html」为 HTML；
+引「标准:测试」为 测试；
+引「标准:字节」为 字节；
+引「标准:文件」为 文件；
+
+法 文章（上下文）则
+    归 Web.HTML响应（HTML.元素（「h1」，【】，【HTML.文字（「文章：」加 上下文.参数值（「id」））】））；
+终
+
+法 追踪（上下文，下一步）则
+    定 响应 为 下一步（）；
+    响应.设首部（「x-middleware」，「passed」）；
+    归 响应；
+终
+
+法 失败（上下文）则 抛「示例失败」；终
+
+法 自定错误（上下文，所误）则
+    归 Web.JSON响应（{「error」：「handled」}）；
+终
+
+定 应用 为 Web.应用（）；
+应用.使用（追踪）；
+应用.取（「/posts/:id」，文章）；
+应用.取（「/boom」，失败）；
+应用.设错误处理器（自定错误）；
+
+定 请求 为 HTTP.解析请求头（「GET /posts/42 HTTP/1.1\r\nHost: localhost」）；
+定 响应 为 应用.处理（请求）；
+测试.相等（字节.转文字（响应.正文），「<h1>文章：42</h1>」）；
+测试.相等（响应.首部值（「x-middleware」），「passed」）；
+
+定 不许 为 应用.处理（HTTP.解析请求头（「POST /posts/42 HTTP/1.1\r\nHost: localhost」））；
+测试.相等（不许.状态码，405）；
+测试.相等（不许.首部值（「allow」），「GET」）；
+
+定 未找到 为 应用.处理（HTTP.解析请求头（「GET /none HTTP/1.1\r\nHost: localhost」））；
+测试.相等（未找到.状态码，404）；
+
+定 已处理 为 应用.处理（HTTP.解析请求头（「GET /boom HTTP/1.1\r\nHost: localhost」））；
+测试.相等（字节.转文字（已处理.正文），「{\"error\":\"handled\"}」）；
+
+令 静态根：文 为「tests/fixtures」；
+若 文件.存在（「yanxu-web/tests/fixtures/site.css」）则
+    置 静态根 为「yanxu-web/tests/fixtures」；
+终
+
+令 已拒绝穿越：理 为 假；
+试 则
+    Web.静态文件响应（静态根，「../言序.toml」）；
+救 所误 则
+    置 已拒绝穿越 为 真；
+终
+测试.断言（已拒绝穿越，「静态目录穿越必须被拒绝」）；
+
+定 静态响应 为 Web.静态文件响应（静态根，「site.css」）；
+测试.相等（静态响应.首部值（「content-type」），「text/css; charset=utf-8」）；
+测试.相等（字节.转文字（静态响应.正文），「body { color: #b33; }\n」）；

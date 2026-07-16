@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unix:
+    name: 言序 · ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          repository: YanXuLang/yanxu
+          path: .yanxu
+          ref: v1.1.6
+      - name: 构建言序 1.1.6
+        run: cargo build --manifest-path .yanxu/Cargo.toml --locked --bin yanxu
+      - name: 静态检查与规格测试
+        shell: sh
+        run: |
+          yanxu="$GITHUB_WORKSPACE/.yanxu/target/debug/yanxu"
+          "$yanxu" --version
+          "$yanxu" 包 .
+          for file in src/*.yx; do "$yanxu" 查 "$file"; done
+          for file in tests/*.yx examples/*.yx; do "$yanxu" 查 "$file"; done
+          for file in benchmarks/*.yx; do "$yanxu" 查 "$file"; done
+          "$yanxu" 试 tests
+          "$yanxu" 包 锁 examples/包调用
+          "$yanxu" 包 运行 examples/包调用
+          "$yanxu" compile . -o "$RUNNER_TEMP/yanju.yxb"
+      - name: 字节码 VM 对照
+        shell: sh
+        run: |
+          yanxu="$GITHUB_WORKSPACE/.yanxu/target/debug/yanxu"
+          for file in tests/*.yx; do "$yanxu" 字节 "$file"; done
+          "$yanxu" examples/生成数据.yx > "$RUNNER_TEMP/tree.txt"
+          "$yanxu" 字节 examples/生成数据.yx > "$RUNNER_TEMP/vm.txt"
+          diff -u "$RUNNER_TEMP/tree.txt" "$RUNNER_TEMP/vm.txt"
+
+  windows:
+    name: 言序 · windows-latest
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          repository: YanXuLang/yanxu
+          path: .yanxu
+          ref: v1.1.6
+      - name: 构建言序 1.1.6
+        run: cargo build --manifest-path .yanxu/Cargo.toml --locked --bin yanxu
+      - name: 静态检查与规格测试
+        shell: pwsh
+        run: |
+          $yanxu = Join-Path $env:GITHUB_WORKSPACE ".yanxu\target\debug\yanxu.exe"
+          & $yanxu --version
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $yanxu 包 .
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Get-ChildItem src, tests, examples, benchmarks -Filter *.yx | ForEach-Object {
+            & $yanxu 查 $_.FullName
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
+          & $yanxu 试 tests
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $yanxu 包 锁 "examples/包调用"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $yanxu 包 运行 "examples/包调用"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $yanxu compile . -o (Join-Path $env:RUNNER_TEMP "yanju.yxb")
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: 字节码 VM 对照
+        shell: pwsh
+        run: |
+          $yanxu = Join-Path $env:GITHUB_WORKSPACE ".yanxu\target\debug\yanxu.exe"
+          Get-ChildItem tests -Filter *.yx | ForEach-Object {
+            & $yanxu 字节 $_.FullName
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }

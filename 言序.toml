@@ -1,0 +1,44 @@
+[包]
+格式 = 2
+名称 = "言域"
+版本 = "0.1.0"
+言序 = ">=1.1.7"
+入口 = "tools/言域.yx"
+说明 = "以言序组织游戏逻辑、以言据描述世界内容的现代中文 MUD 游戏引擎"
+许可 = "MIT"
+作者 = ["刘秀"]
+
+[依赖]
+言据 = { 包 = "言据", 路径 = "vendor/yanju", 版 = "=1.1.2" }
+言验 = { 包 = "言验", 路径 = "vendor/yanxu-validate", 版 = "=0.1.0" }
+言录 = { 包 = "言录", 路径 = "vendor/yanxu-log", 版 = "=0.1.0" }
+言时 = { 包 = "言时", 路径 = "vendor/yanxu-datetime", 版 = "=0.1.0" }
+言令 = { 包 = "言令", 路径 = "vendor/yanxu-cli", 版 = "=0.1.0" }
+言库 = { 包 = "言库", 路径 = "vendor/yanxu-db", 版 = "=0.1.0" }
+言舟 = { 包 = "言舟", 路径 = "vendor/yanxu-sqlite", 版 = "=0.1.0" }
+言枢 = { 包 = "yanxu-web", 路径 = "vendor/yanxu-web", 版 = "=0.2.1" }
+
+[开发依赖]
+言试 = { 包 = "言试", 路径 = "vendor/yanxu-test", 版 = "=0.1.0" }
+
+[权限]
+文件 = ["."]
+网络 = ["127.0.0.1", "::1", "localhost"]
+TCP监听 = ["127.0.0.1", "::1", "localhost"]
+UDP绑定 = []
+环境 = ["YANYU_*", "HOME", "USERPROFILE", "TEMP", "TMP"]
+进程 = true
+原生扩展 = false
+图形界面 = false
+剪贴板 = false
+文件对话框 = false
+系统通知 = false
+托盘 = false
+打开外部地址 = false
+全局快捷键 = false
+
+[导出]
+默认 = "src/言域.yx"
+
+[构建]
+目标 = "字节码"

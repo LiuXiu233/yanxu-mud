@@ -1,0 +1,42 @@
+lock_version = 2
+manifest_checksum = "22613f856f8901dfbfa3be0ab8bc962235dcf2247abc66e56b87ba0fa23bc850"
+target = "aarch64-apple-darwin"
+generator = "1.1.6"
+
+[root_dependencies]
+yanxu-html = "yanxu-html@0.1.1#99332c12d990-e7ea8cdb947fd83e"
+yanxu-http = "yanxu-http@0.1.1#17696d671b00-bc61685c0ab03271"
+
+[root_dev_dependencies]
+
+[[package]]
+id = "yanxu-html@0.1.1#99332c12d990-e7ea8cdb947fd83e"
+name = "yanxu-html"
+version = "0.1.1"
+source = "git:https://github.com/yanxulang/yanxu-html.git"
+revision = "9c015a2173b2ecae79b9acd2711cac57b5367462"
+checksum = "e7ea8cdb947fd83e907ebd6c9ba21917deab3a029537226f8deeb852a9b7c2f9"
+entry = "src/言序HTML.yx"
+target = "aarch64-apple-darwin"
+minimum_yanxu = ">=1.1.5"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言序HTML.yx"
+
+[[package]]
+id = "yanxu-http@0.1.1#17696d671b00-bc61685c0ab03271"
+name = "yanxu-http"
+version = "0.1.1"
+source = "git:https://github.com/yanxulang/yanxu-http.git"
+revision = "5eae560e168b7402014f664bf70d7527581284b7"
+checksum = "bc61685c0ab032718ee7d924fe39d55d7c8ee58498be6110934667d3a5e2b4b1"
+entry = "src/言序HTTP.yx"
+target = "aarch64-apple-darwin"
+minimum_yanxu = ">=1.1.5"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言序HTTP.yx"
