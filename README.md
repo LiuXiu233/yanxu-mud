@@ -38,7 +38,7 @@ flowchart TB
 
 ## 安装
 
-需要言序 `1.1.12` 和 Git。仓库锁定并附带经过审查的依赖源码。
+需要言序 `1.1.12`、SQLite `3.38.0+` 和 Git。仓库锁定并附带经过审查的依赖源码；完整测试会执行真实 SQLite 往返，不静默跳过。
 
 ```bash
 git clone https://github.com/LiuXiu233/yanxu-mud.git
@@ -48,6 +48,8 @@ yanxu 查 src/言域.yx
 yanxu 试 tests
 yanxu 编 . -o build --release
 ```
+
+如果 `sqlite3` 不在 `PATH`，请将 `YANYU_SQLITE3` 设置为 SQLite CLI 的绝对路径。
 
 完整验证可在 Windows 运行 `./scripts/verify.ps1`，在 Linux 或 macOS 运行 `./scripts/verify.sh`。
 

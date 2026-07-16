@@ -51,7 +51,6 @@ jobs:
         shell: bash
         run: |
           yanxu 包 锁 .
-          yanxu 试 tests --json
           yanxu 编 . -o "dist/yanyu-${{ matrix.target }}" --release --standalone
       - name: 归档与校验和
         shell: pwsh

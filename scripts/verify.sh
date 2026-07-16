@@ -6,6 +6,16 @@ cd "$root"
 
 yanxu 包 锁 .
 
+if [[ -z "${YANYU_SQLITE3:-}" ]]; then
+  YANYU_SQLITE3="$(command -v sqlite3 || true)"
+  export YANYU_SQLITE3
+fi
+if [[ -z "$YANYU_SQLITE3" ]]; then
+  echo '缺少 SQLite 3.38+ CLI；请安装 sqlite3 或设置 YANYU_SQLITE3' >&2
+  exit 1
+fi
+"$YANYU_SQLITE3" --version
+
 while IFS= read -r -d '' source; do
   yanxu 格 --写 "$source"
 done < <(find src tools tests api-tests examples benchmarks -type f -name '*.yx' -print0 2>/dev/null || true)

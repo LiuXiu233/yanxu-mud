@@ -4,6 +4,8 @@
 
 ## 开发环境
 
+准备言序 `1.1.12` 与 SQLite `3.38.0+`。如果 `sqlite3` 不在 `PATH`，将 `YANYU_SQLITE3` 设置为 CLI 的绝对路径。
+
 ```bash
 git clone https://github.com/LiuXiu233/yanxu-mud.git
 cd yanxu-mud

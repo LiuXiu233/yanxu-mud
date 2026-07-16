@@ -6,6 +6,14 @@ Set-Location -LiteralPath $root
 yanxu 包 锁 .
 if ($LASTEXITCODE -ne 0) { throw '依赖锁定失败' }
 
+if (-not $env:YANYU_SQLITE3) {
+    $sqlite = Get-Command sqlite3 -ErrorAction SilentlyContinue
+    if (-not $sqlite) { throw '缺少 SQLite 3.38+ CLI；请安装 sqlite3 或设置 YANYU_SQLITE3' }
+    $env:YANYU_SQLITE3 = $sqlite.Source
+}
+& $env:YANYU_SQLITE3 --version
+if ($LASTEXITCODE -ne 0) { throw 'SQLite CLI 不可执行' }
+
 $sources = Get-ChildItem -Path src,tools,tests,api-tests,examples,benchmarks -Filter '*.yx' -File -Recurse -ErrorAction SilentlyContinue
 foreach ($source in $sources) {
     yanxu 格 --写 $source.FullName

@@ -2,12 +2,15 @@
 
 ## 准备工具链
 
-安装言序 1.1.12，并确认：
+安装言序 1.1.12 和 SQLite 3.38.0 以上版本，并确认：
 
 ```bash
 yanxu 版本 --json
+sqlite3 --version
 yanxu 包 .
 ```
+
+如果 `sqlite3` 不在 `PATH`，将 `YANYU_SQLITE3` 设置为 CLI 的绝对路径。完整测试包含真实 SQLite 数据库往返，不会在缺少 CLI 时静默跳过。
 
 首次克隆后锁定依赖并验证：
 
