@@ -1,5 +1,5 @@
 lock_version = 2
-manifest_checksum = "70c05007bea6a19374eddee1d8addf85ce27c1b9203c5c4c6ddc7088d9439d8a"
+manifest_checksum = "75381a11b96579fb052eb6adab29468f2387eafbbc267705fced1ec50cd0d74f"
 target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 

@@ -4,6 +4,10 @@
 
 引「包:言域/SQLite仓储」为 SQLite仓储；
 
+引「包:言域/数据迁移」为 数据迁移；
+
+引「包:言域/仓储」为 仓储；
+
 引「标准:测试」为 测试；
 
 测试.相等（事件日志.格式版本，1）；
@@ -21,3 +25,9 @@
 测试.相等（SQLite仓储.数据库结构版本，1）；
 
 测试.相等（SQLite仓储.SQLite最低版本，「3.38.0」）；
+
+测试.相等（仓储.快照恢复检查协议，「言域/快照恢复检查」）；
+
+测试.相等（仓储.恢复验证错误，「YANYU_REPOSITORY_RESTORE_VERIFICATION_FAILED」）；
+
+测试.相等（数据迁移.历史分歧错误，「YANYU_DATA_MIGRATION_HISTORY_DIVERGED」）；

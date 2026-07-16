@@ -6,6 +6,8 @@
 
 引「../../src/持久化/SQLite仓储.yx」为 SQLite仓储；
 
+引「../../src/持久化/数据迁移.yx」为 数据迁移；
+
 引「标准:测试」为 测试；
 
 测试.相等（仓储.格式版本，2）；
@@ -17,3 +19,9 @@
 测试.相等（事件日志.协议名称，「言域/事件日志记录」）；
 
 测试.相等（SQLite仓储.数据库结构版本，1）；
+
+测试.相等（仓储.快照恢复格式版本，1）；
+
+测试.相等（仓储.恢复验证错误，「YANYU_REPOSITORY_RESTORE_VERIFICATION_FAILED」）；
+
+测试.相等（数据迁移.定义无效错误，「YANYU_DATA_MIGRATION_DEFINITION_INVALID」）；
