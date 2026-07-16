@@ -1,7 +1,7 @@
 lock_version = 2
-manifest_checksum = "92e10739e5eb8fd3afa5a0d56d625ca2571fb2472e1045bbdab13c3222a4b064"
+manifest_checksum = "d53e7fe0b35dac0f17b510481ff9a9ab009adf3d6e0067134234f419c476b587"
 target = "x86_64-pc-windows-msvc"
-generator = "1.1.7"
+generator = "1.1.12"
 
 [root_dependencies]
 "言令" = "言令@0.1.0#a7ac7754fa1a-b02dbe083f7b645b"

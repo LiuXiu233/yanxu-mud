@@ -2,7 +2,7 @@
 
 ## 准备工具链
 
-安装言序 1.1.7，并确认：
+安装言序 1.1.12，并确认：
 
 ```bash
 yanxu 版本 --json
@@ -27,6 +27,24 @@ yanxu 编 . -o build --release
 定 信息：典 为 言域.服务器信息（）；
 言 信息【「版本」】；
 ```
+
+## 检查示例内容
+
+青石镇内容包可以直接检查、装载或构建为带摘要的言据制品：
+
+```bash
+yanxu tools/言域.yx -- 内容检查 examples/青石镇/内容
+yanxu --max-steps 20000000 tools/言域.yx -- 构建 --输出 青石镇世界.yj examples/青石镇/内容
+```
+
+```yanxu
+引「包:言域/内容加载」为 内容加载；
+
+定 图 为 内容加载.构建内容图（【「examples/青石镇/内容」】，「0.3.0」，「zh-CN」，【】，【】）；
+言 图.统计（）；
+```
+
+内容包清单、Schema 和热重载边界分别见 [CONTENT_PACKS.md](CONTENT_PACKS.md)、[CONTENT_SCHEMA.md](CONTENT_SCHEMA.md) 和 [HOT_RELOAD.md](HOT_RELOAD.md)。
 
 项目运行权限由 `言序.toml` 显式声明。开发中不要扩大权限以绕过错误；新增文件、网络、进程或原生扩展能力时必须同步更新安全模型和测试。
 

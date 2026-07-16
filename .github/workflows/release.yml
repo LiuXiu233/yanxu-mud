@@ -21,21 +21,26 @@ jobs:
           - os: ubuntu-latest
             target: linux-x64
             asset: yanxu-x86_64-unknown-linux-gnu.tar.gz
+            sha256: 2eb44e9dc5982acca1dbdc6408ed428266b5d4561e7108f19aba870614582990
           - os: macos-latest
             target: macos-arm64
             asset: yanxu-aarch64-apple-darwin.tar.gz
+            sha256: ad355a1653387331f0d7415681497668229b53478d85446263e70c2a28e7b3ac
           - os: windows-latest
             target: windows-x64
             asset: yanxu-x86_64-pc-windows-msvc.zip
+            sha256: 1eba98ba0043618a30ddb08be4073486a16a0485287fa63aa6e8c488fe9d1ea4
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - name: 安装言序 1.1.7
+      - name: 安装并校验言序 1.1.12
         shell: pwsh
         run: |
-          $base = 'https://github.com/yanxulang/yanxu/releases/download/v1.1.7'
+          $base = 'https://github.com/yanxulang/yanxu/releases/download/v1.1.12'
           New-Item -ItemType Directory -Force -Path "$env:RUNNER_TEMP/yanxu" | Out-Null
           Invoke-WebRequest "$base/${{ matrix.asset }}" -OutFile "$env:RUNNER_TEMP/${{ matrix.asset }}"
+          $actual = (Get-FileHash "$env:RUNNER_TEMP/${{ matrix.asset }}" -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne '${{ matrix.sha256 }}') { throw "言序制品 SHA-256 不一致：$actual" }
           if ('${{ matrix.asset }}'.EndsWith('.zip')) {
             Expand-Archive "$env:RUNNER_TEMP/${{ matrix.asset }}" "$env:RUNNER_TEMP/yanxu" -Force
           } else {
