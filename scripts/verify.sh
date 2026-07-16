@@ -8,12 +8,18 @@ yanxu 包 锁 .
 
 while IFS= read -r -d '' source; do
   yanxu 格 --写 "$source"
-done < <(find src tools tests examples benchmarks -type f -name '*.yx' -print0 2>/dev/null || true)
+done < <(find src tools tests api-tests examples benchmarks -type f -name '*.yx' -print0 2>/dev/null || true)
 
 yanxu 查 src/言域.yx
 yanxu 查 tools/言域.yx
 yanxu 试 tests --json
 yanxu 兼容 tests --json
+(
+  cd api-tests
+  yanxu 包 锁 .
+  yanxu 试 tests --json
+  yanxu 兼容 tests --json
+)
 yanxu tools/言域.yx -- 内容检查 examples/青石镇/内容
 mkdir -p dist
 yanxu --max-steps 20000000 tools/言域.yx -- 构建 --输出 dist/青石镇世界.yj --覆盖 examples/青石镇/内容

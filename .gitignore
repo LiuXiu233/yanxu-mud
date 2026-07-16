@@ -12,5 +12,6 @@ var/
 *.log
 *.tmp
 *.bak
+/tests/.*
 .DS_Store
 Thumbs.db
