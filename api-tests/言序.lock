@@ -1,10 +1,10 @@
 lock_version = 2
-manifest_checksum = "cfaa698a5515980fa0b0030d4c121cbc21fe142052291549e3a47ac1ceeb00ea"
+manifest_checksum = "60a75f3d9328e070cbdc98d6a50d9f3bfa69aafada884beff7f5052c369372c9"
 target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.3.0#a5b4b144f221-3e2d063d6787d5dd"
+"言域" = "言域@0.4.0#a5b4b144f221-5b9c26b4074bc2d2"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.3.0#a5b4b144f221-3e2d063d6787d5dd"
+id = "言域@0.4.0#a5b4b144f221-5b9c26b4074bc2d2"
 name = "言域"
-version = "0.3.0"
+version = "0.4.0"
 source = "path:.."
-checksum = "3e2d063d6787d5ddedc338d122fcbdcdf8995aec43a23ac54e7c5cd3ad916259"
+checksum = "5b9c26b4074bc2d2cf2687b39e67569443815b1ddd9402ce264e957f087ec9ec"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"

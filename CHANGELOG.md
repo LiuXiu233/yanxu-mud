@@ -4,12 +4,20 @@
 
 ## [未发布]
 
+## [0.4.0] - 2026-07-17
+
 ### 新增
 
 - 内容寻址言据文件仓储与 SQLite 原子世代仓储，状态、快照和事件日志同世代提交。
 - 哈希链事实事件日志，以及查询、窗口读取和确定性重放。
 - 有严格历史前缀、定义摘要、后置检查、批次回滚和并发冲突保留的数据迁移执行器。
 - 三后端统一的快照恢复预检与恢复后状态摘要验证报告。
+
+### 变更
+
+- 根包版本和服务器信息更新为 0.4.0“持久化”预览。
+- 状态仓储公共协议增加只读恢复预检，恢复操作返回前后状态摘要验证报告。
+- 公共导出增加数据迁移模块，外部消费者契约固定新的导出表与包摘要。
 
 ## [0.3.0] - 2026-07-17
 
@@ -58,7 +66,8 @@
 - 跨平台 CI、发布和安全检查基线。
 - 架构、入门、贡献、安全和兼容文档。
 
-[未发布]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.3.0...HEAD
+[未发布]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/LiuXiu233/yanxu-mud/releases/tag/v0.1.0
