@@ -4,7 +4,7 @@ target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-a3c1f949e4bd0a53"
+"言域" = "言域@0.4.1#a5b4b144f221-cef747daf6dce583"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-a3c1f949e4bd0a53"
+id = "言域@0.4.1#a5b4b144f221-cef747daf6dce583"
 name = "言域"
 version = "0.4.1"
 source = "path:.."
-checksum = "a3c1f949e4bd0a53f269f6278a8b745d3cc1431c52672c8db2272c6daca4a545"
+checksum = "cef747daf6dce5835c9050bceed95b025822dc6d0214569cefc6b44296d4fa90"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
@@ -121,6 +121,7 @@ minimum_yanxu = ">=1.1.12"
 "系统" = "src/系统/系统注册表.yx"
 "组件" = "src/组件/组件注册表.yx"
 "虚拟时钟" = "src/测试支持/虚拟时钟.yx"
+"账户" = "src/应用/账户服务.yx"
 "通用组件" = "src/组件/通用组件.yx"
 "默认" = "src/言域.yx"
 
