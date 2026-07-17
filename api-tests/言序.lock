@@ -4,7 +4,7 @@ target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-625c369d3ce990b0"
+"言域" = "言域@0.4.1#a5b4b144f221-6a5e7abf5dab865b"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-625c369d3ce990b0"
+id = "言域@0.4.1#a5b4b144f221-6a5e7abf5dab865b"
 name = "言域"
 version = "0.4.1"
 source = "path:.."
-checksum = "625c369d3ce990b0006db720ef83a6e6735bff4c28f403986dc9120cc9391524"
+checksum = "6a5e7abf5dab865bb23e3dc96b13f9b990032b286831e9310aa2a827582535bd"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
@@ -116,6 +116,7 @@ minimum_yanxu = ">=1.1.12"
 "数据迁移" = "src/持久化/数据迁移.yx"
 "文件仓储" = "src/持久化/文件仓储.yx"
 "本地化" = "src/内容/本地化.yx"
+"权限" = "src/应用/权限服务.yx"
 "消息" = "src/消息/消息协议.yx"
 "消息渲染" = "src/消息/消息渲染.yx"
 "系统" = "src/系统/系统注册表.yx"
