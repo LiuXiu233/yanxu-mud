@@ -4,7 +4,7 @@ target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-fded7ec35411164e"
+"言域" = "言域@0.4.1#a5b4b144f221-b03a876e10772986"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-fded7ec35411164e"
+id = "言域@0.4.1#a5b4b144f221-b03a876e10772986"
 name = "言域"
 version = "0.4.1"
 source = "path:.."
-checksum = "fded7ec35411164e3ffafbfc5a6df021d99554653a378568b621423cb8e75351"
+checksum = "b03a876e1077298637ca6eae7ec7f52ce835133a3aec1b7fede5c07a01fcbb9d"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
