@@ -36,14 +36,14 @@ yanxu 编 . -o build --release
 青石镇内容包可以直接检查、装载或构建为带摘要的言据制品：
 
 ```bash
-yanxu tools/言域.yx -- 内容检查 examples/青石镇/内容
-yanxu --max-steps 20000000 tools/言域.yx -- 构建 --输出 青石镇世界.yj examples/青石镇/内容
+yanxu tools/言域.yx -- 内容检查 --行为 言域:技能行为/伤害 examples/青石镇/内容
+yanxu --max-steps 20000000 tools/言域.yx -- 构建 --行为 言域:技能行为/伤害 --输出 青石镇世界.yj examples/青石镇/内容
 ```
 
 ```yanxu
 引「包:言域/内容加载」为 内容加载；
 
-定 图 为 内容加载.构建内容图（【「examples/青石镇/内容」】，「0.4.1」，「zh-CN」，【】，【】）；
+定 图 为 内容加载.构建内容图（【「examples/青石镇/内容」】，「0.4.1」，「zh-CN」，【】，【「言域:技能行为/伤害」】）；
 言 图.统计（）；
 ```
 

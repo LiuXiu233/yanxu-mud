@@ -79,7 +79,7 @@
 检查一个或多个内容包：
 
 ```bash
-yanxu tools/言域.yx -- 内容检查 examples/青石镇/内容
+yanxu tools/言域.yx -- 内容检查 --行为 言域:技能行为/伤害 examples/青石镇/内容
 ```
 
 构建内容世界制品：

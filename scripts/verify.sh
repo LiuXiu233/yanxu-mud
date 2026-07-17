@@ -30,8 +30,8 @@ yanxu 兼容 tests --json
   yanxu 试 tests --json
   yanxu 兼容 tests --json
 )
-yanxu tools/言域.yx -- 内容检查 examples/青石镇/内容
+yanxu tools/言域.yx -- 内容检查 --行为 言域:技能行为/伤害 examples/青石镇/内容
 mkdir -p .yanxu/verify
-yanxu --max-steps 20000000 tools/言域.yx -- 构建 --输出 .yanxu/verify/青石镇世界.yj --覆盖 examples/青石镇/内容
+yanxu --max-steps 20000000 tools/言域.yx -- 构建 --行为 言域:技能行为/伤害 --输出 .yanxu/verify/青石镇世界.yj --覆盖 examples/青石镇/内容
 yanxu 编 . -o build --release
 "$root/scripts/check-history.sh"
