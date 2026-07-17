@@ -4,7 +4,7 @@ target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-d1c0d7793e4990c0"
+"言域" = "言域@0.4.1#a5b4b144f221-98b2676fe747a66a"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-d1c0d7793e4990c0"
+id = "言域@0.4.1#a5b4b144f221-98b2676fe747a66a"
 name = "言域"
 version = "0.4.1"
 source = "path:.."
-checksum = "d1c0d7793e4990c09b85a352fb64135d7ac0658b507d2f205152e79ada706d03"
+checksum = "98b2676fe747a66a287f175ccdb35eec1f132800328607dc5602621f31728b02"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
@@ -121,6 +121,7 @@ minimum_yanxu = ">=1.1.12"
 "消息" = "src/消息/消息协议.yx"
 "消息渲染" = "src/消息/消息渲染.yx"
 "物品" = "src/系统/物品系统.yx"
+"状态" = "src/系统/状态系统.yx"
 "空间" = "src/系统/空间系统.yx"
 "系统" = "src/系统/系统注册表.yx"
 "组件" = "src/组件/组件注册表.yx"
