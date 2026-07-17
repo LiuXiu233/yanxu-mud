@@ -4,7 +4,7 @@ target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-df9aa0cd63de7caa"
+"言域" = "言域@0.4.1#a5b4b144f221-b66c96177aa2f4d4"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-df9aa0cd63de7caa"
+id = "言域@0.4.1#a5b4b144f221-b66c96177aa2f4d4"
 name = "言域"
 version = "0.4.1"
 source = "path:.."
-checksum = "df9aa0cd63de7caa6b76c9eaac1d8c2435ca4ab91bf6ea86d29ac82844fdecdd"
+checksum = "b66c96177aa2f4d43f70941d2527be2f31bf5a6d835a9250a916aa1eb7fff1f5"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
@@ -119,6 +119,7 @@ minimum_yanxu = ">=1.1.12"
 "属性" = "src/系统/属性系统.yx"
 "战斗" = "src/系统/战斗系统.yx"
 "技能" = "src/系统/技能系统.yx"
+"掉落" = "src/系统/掉落系统.yx"
 "数据迁移" = "src/持久化/数据迁移.yx"
 "文件仓储" = "src/持久化/文件仓储.yx"
 "本地化" = "src/内容/本地化.yx"
