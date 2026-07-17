@@ -4,7 +4,7 @@ target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-b66c96177aa2f4d4"
+"言域" = "言域@0.4.1#a5b4b144f221-2487fb7e10cd2f37"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-b66c96177aa2f4d4"
+id = "言域@0.4.1#a5b4b144f221-2487fb7e10cd2f37"
 name = "言域"
 version = "0.4.1"
 source = "path:.."
-checksum = "b66c96177aa2f4d43f70941d2527be2f31bf5a6d835a9250a916aa1eb7fff1f5"
+checksum = "2487fb7e10cd2f37e9a08bc57d741408c4ff744bb3970f1c5170c1dd546dc0e3"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
@@ -122,6 +122,7 @@ minimum_yanxu = ">=1.1.12"
 "掉落" = "src/系统/掉落系统.yx"
 "数据迁移" = "src/持久化/数据迁移.yx"
 "文件仓储" = "src/持久化/文件仓储.yx"
+"时间" = "src/系统/时间系统.yx"
 "本地化" = "src/内容/本地化.yx"
 "权限" = "src/应用/权限服务.yx"
 "死亡" = "src/系统/死亡系统.yx"
