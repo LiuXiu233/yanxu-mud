@@ -4,7 +4,7 @@ target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-734a3d6ca0375c63"
+"言域" = "言域@0.4.1#a5b4b144f221-d1c0d7793e4990c0"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-734a3d6ca0375c63"
+id = "言域@0.4.1#a5b4b144f221-d1c0d7793e4990c0"
 name = "言域"
 version = "0.4.1"
 source = "path:.."
-checksum = "734a3d6ca0375c63a07118fac6a49e9850a45c73468b6cce47d12ae109fc0d30"
+checksum = "d1c0d7793e4990c09b85a352fb64135d7ac0658b507d2f205152e79ada706d03"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
@@ -113,6 +113,7 @@ minimum_yanxu = ">=1.1.12"
 "命令" = "src/命令/命令协议.yx"
 "命令输入" = "src/命令/输入解析.yx"
 "实体" = "src/实体/实体.yx"
+"属性" = "src/系统/属性系统.yx"
 "数据迁移" = "src/持久化/数据迁移.yx"
 "文件仓储" = "src/持久化/文件仓储.yx"
 "本地化" = "src/内容/本地化.yx"
@@ -124,6 +125,7 @@ minimum_yanxu = ">=1.1.12"
 "系统" = "src/系统/系统注册表.yx"
 "组件" = "src/组件/组件注册表.yx"
 "虚拟时钟" = "src/测试支持/虚拟时钟.yx"
+"装备" = "src/系统/装备系统.yx"
 "角色" = "src/应用/角色服务.yx"
 "账户" = "src/应用/账户服务.yx"
 "通用组件" = "src/组件/通用组件.yx"
