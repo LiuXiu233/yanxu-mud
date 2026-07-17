@@ -4,7 +4,7 @@ target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-fba6a8d476dec775"
+"言域" = "言域@0.4.1#a5b4b144f221-de8e6428576a5341"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-fba6a8d476dec775"
+id = "言域@0.4.1#a5b4b144f221-de8e6428576a5341"
 name = "言域"
 version = "0.4.1"
 source = "path:.."
-checksum = "fba6a8d476dec7755c41f66da24ffa1395035fc45bddf12edb25141324541772"
+checksum = "de8e6428576a53410c060aad162bcdf97c2e1eb36db053d32fa5b04f81a5fc00"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
@@ -92,6 +92,7 @@ minimum_yanxu = ">=1.1.12"
 "言验" = "言验@0.1.0#2335d12a7c33-fc369136b1061f39"
 
 [package.exports]
+AI = "src/系统/AI系统.yx"
 "SQLite仓储" = "src/持久化/SQLite仓储.yx"
 "世界事务" = "src/世界/世界事务.yx"
 "世界循环" = "src/世界/世界循环.yx"

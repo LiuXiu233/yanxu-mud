@@ -45,12 +45,12 @@ finally {
     Pop-Location
 }
 
-yanxu tools/言域.yx -- 内容检查 --行为 言域:技能行为/伤害 --行为 言域:计划行为/刷新 examples/青石镇/内容
+yanxu tools/言域.yx -- 内容检查 --行为 言域:技能行为/伤害 --行为 言域:计划行为/刷新 --行为 言域:AI行为/敌对近战 examples/青石镇/内容
 if ($LASTEXITCODE -ne 0) { throw '青石镇内容检查失败' }
 
 $verifyDirectory = Join-Path $root '.yanxu/verify'
 New-Item -ItemType Directory -Force -Path $verifyDirectory | Out-Null
-yanxu --max-steps 20000000 tools/言域.yx -- 构建 --行为 言域:技能行为/伤害 --行为 言域:计划行为/刷新 --输出 "$verifyDirectory/青石镇世界.yj" --覆盖 examples/青石镇/内容
+yanxu --max-steps 20000000 tools/言域.yx -- 构建 --行为 言域:技能行为/伤害 --行为 言域:计划行为/刷新 --行为 言域:AI行为/敌对近战 --输出 "$verifyDirectory/青石镇世界.yj" --覆盖 examples/青石镇/内容
 if ($LASTEXITCODE -ne 0) { throw '青石镇内容制品构建失败' }
 
 yanxu 编 . -o build --release
