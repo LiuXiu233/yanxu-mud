@@ -4,7 +4,7 @@ target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-de8e6428576a5341"
+"言域" = "言域@0.4.1#a5b4b144f221-f5b5dd2f8cce6984"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-de8e6428576a5341"
+id = "言域@0.4.1#a5b4b144f221-f5b5dd2f8cce6984"
 name = "言域"
 version = "0.4.1"
 source = "path:.."
-checksum = "de8e6428576a53410c060aad162bcdf97c2e1eb36db053d32fa5b04f81a5fc00"
+checksum = "f5b5dd2f8cce698466649e3a21e0f32be6a84347ef81a86c526fe1c1e6c206ce"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
@@ -140,6 +140,7 @@ AI = "src/系统/AI系统.yx"
 "角色" = "src/应用/角色服务.yx"
 "账户" = "src/应用/账户服务.yx"
 "通用组件" = "src/组件/通用组件.yx"
+"频道" = "src/应用/频道服务.yx"
 "默认" = "src/言域.yx"
 
 [[package]]
