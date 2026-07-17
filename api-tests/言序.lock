@@ -4,7 +4,7 @@ target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-2487fb7e10cd2f37"
+"言域" = "言域@0.4.1#a5b4b144f221-fba6a8d476dec775"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-2487fb7e10cd2f37"
+id = "言域@0.4.1#a5b4b144f221-fba6a8d476dec775"
 name = "言域"
 version = "0.4.1"
 source = "path:.."
-checksum = "2487fb7e10cd2f37e9a08bc57d741408c4ff744bb3970f1c5170c1dd546dc0e3"
+checksum = "fba6a8d476dec7755c41f66da24ffa1395035fc45bddf12edb25141324541772"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
@@ -112,6 +112,7 @@ minimum_yanxu = ">=1.1.12"
 "内容热重载" = "src/内容/热重载.yx"
 "内容版本" = "src/内容/语义版本.yx"
 "冷却" = "src/系统/冷却系统.yx"
+"刷新" = "src/系统/刷新系统.yx"
 "命令" = "src/命令/命令协议.yx"
 "命令输入" = "src/命令/输入解析.yx"
 "实体" = "src/实体/实体.yx"
