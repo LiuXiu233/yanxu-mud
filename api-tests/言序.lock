@@ -1,10 +1,10 @@
 lock_version = 2
-manifest_checksum = "60a75f3d9328e070cbdc98d6a50d9f3bfa69aafada884beff7f5052c369372c9"
+manifest_checksum = "5317851cd34c6f3dadd34f0a41609cf0d896008292c969beb6118c8df68c6b79"
 target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.4.1#a5b4b144f221-f5b5dd2f8cce6984"
+"言域" = "言域@0.5.0#a5b4b144f221-6849ffdf7108b888"
 
 [root_dev_dependencies]
 
@@ -72,11 +72,11 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.4.1#a5b4b144f221-f5b5dd2f8cce6984"
+id = "言域@0.5.0#a5b4b144f221-6849ffdf7108b888"
 name = "言域"
-version = "0.4.1"
+version = "0.5.0"
 source = "path:.."
-checksum = "f5b5dd2f8cce698466649e3a21e0f32be6a84347ef81a86c526fe1c1e6c206ce"
+checksum = "6849ffdf7108b888ae4f1fab29ac5ec8127d86e66203f898121ff5b3f6ca8b00"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
@@ -126,6 +126,7 @@ AI = "src/系统/AI系统.yx"
 "文件仓储" = "src/持久化/文件仓储.yx"
 "时间" = "src/系统/时间系统.yx"
 "本地化" = "src/内容/本地化.yx"
+"本地控制台" = "src/接入/本地控制台.yx"
 "权限" = "src/应用/权限服务.yx"
 "死亡" = "src/系统/死亡系统.yx"
 "消息" = "src/消息/消息协议.yx"

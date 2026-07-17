@@ -1,0 +1,315 @@
+lock_version = 2
+manifest_checksum = "cc89c984a5d689207ceac1a01da8cec1bd6d4103bb9f63a39e3f33a4cbe6983f"
+target = "x86_64-pc-windows-msvc"
+generator = "1.1.12"
+
+[root_dependencies]
+"言域" = "言域@0.5.0#e526f172db95-6849ffdf7108b888"
+"言据" = "言据@1.1.2#9680ed0645ca-cfc64b2d561cc384"
+
+[root_dev_dependencies]
+"言试" = "言试@0.1.0#5cd5c1182384-c31c8fc47f4634d8"
+
+[[package]]
+id = "yanxu-html@0.1.1#25b0728287df-1d1e9fb34ea3b444"
+name = "yanxu-html"
+version = "0.1.1"
+source = "path:../yanxu-html"
+checksum = "1d1e9fb34ea3b444e90f1c7641b8cfd00fdd06cd95388643d7b9b74b198eddee"
+entry = "src/言序HTML.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.5"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言序HTML.yx"
+
+[[package]]
+id = "yanxu-http@0.1.1#aa4c50606c43-53850478fab458df"
+name = "yanxu-http"
+version = "0.1.1"
+source = "path:../yanxu-http"
+checksum = "53850478fab458df35a8631bd2427c37776780984b70086bd2462263c5ab8c73"
+entry = "src/言序HTTP.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.5"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言序HTTP.yx"
+
+[[package]]
+id = "yanxu-web@0.2.1#76ebc89b7f9d-6216e24590505da2"
+name = "yanxu-web"
+version = "0.2.1"
+source = "path:vendor/yanxu-web"
+checksum = "6216e24590505da220b9ca87c6b8be51c9bd7892792a5df5b2fd2ba082386911"
+entry = "src/言序Web.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.5"
+
+[package.dependencies]
+yanxu-html = "yanxu-html@0.1.1#25b0728287df-1d1e9fb34ea3b444"
+yanxu-http = "yanxu-http@0.1.1#aa4c50606c43-53850478fab458df"
+
+[package.exports]
+"言标" = "src/言标.yx"
+"默认" = "src/言序Web.yx"
+
+[[package]]
+id = "言令@0.1.0#a7ac7754fa1a-b02dbe083f7b645b"
+name = "言令"
+version = "0.1.0"
+source = "path:vendor/yanxu-cli"
+checksum = "b02dbe083f7b645ba13297e40d80b818a4abf110b56f5579a5d60219ea8760fb"
+entry = "src/言令.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言令.yx"
+
+[[package]]
+id = "言域@0.5.0#e526f172db95-6849ffdf7108b888"
+name = "言域"
+version = "0.5.0"
+source = "path:../.."
+checksum = "6849ffdf7108b888ae4f1fab29ac5ec8127d86e66203f898121ff5b3f6ca8b00"
+entry = "tools/言域.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.12"
+
+[package.dependencies]
+"言令" = "言令@0.1.0#a7ac7754fa1a-b02dbe083f7b645b"
+"言库" = "言库@0.1.0#b23e624e7307-d1e7eada94366336"
+"言录" = "言录@0.1.0#f6492911912a-0bbfddea3996dcad"
+"言据" = "言据@1.1.2#94caaaac9145-cfc64b2d561cc384"
+"言时" = "言时@0.1.0#d4430e6965f8-9bdaf804be77c7ce"
+"言枢" = "yanxu-web@0.2.1#76ebc89b7f9d-6216e24590505da2"
+"言舟" = "言舟@0.1.0#52759d929bc0-0e94ade14f725c84"
+"言验" = "言验@0.1.0#2335d12a7c33-fc369136b1061f39"
+
+[package.exports]
+AI = "src/系统/AI系统.yx"
+"SQLite仓储" = "src/持久化/SQLite仓储.yx"
+"世界事务" = "src/世界/世界事务.yx"
+"世界循环" = "src/世界/世界循环.yx"
+"事件" = "src/事件/事件总线.yx"
+"事件日志" = "src/持久化/事件日志.yx"
+"仓储" = "src/持久化/仓储协议.yx"
+"任务" = "src/系统/任务系统.yx"
+"内存仓储" = "src/持久化/内存仓储.yx"
+"内容Schema" = "src/内容/Schema注册表.yx"
+"内容加载" = "src/内容/文件加载器.yx"
+"内容包" = "src/内容/内容包协议.yx"
+"内容原型" = "src/内容/原型注册表.yx"
+"内容图" = "src/内容/内容图.yx"
+"内容工具" = "src/内容/内容工具.yx"
+"内容差异" = "src/内容/内容差异.yx"
+"内容引用" = "src/内容/引用解析.yx"
+"内容文档" = "src/内容/内容文档.yx"
+"内容热重载" = "src/内容/热重载.yx"
+"内容版本" = "src/内容/语义版本.yx"
+"冷却" = "src/系统/冷却系统.yx"
+"刷新" = "src/系统/刷新系统.yx"
+"命令" = "src/命令/命令协议.yx"
+"命令输入" = "src/命令/输入解析.yx"
+"实体" = "src/实体/实体.yx"
+"对话" = "src/系统/对话系统.yx"
+"属性" = "src/系统/属性系统.yx"
+"战斗" = "src/系统/战斗系统.yx"
+"技能" = "src/系统/技能系统.yx"
+"掉落" = "src/系统/掉落系统.yx"
+"数据迁移" = "src/持久化/数据迁移.yx"
+"文件仓储" = "src/持久化/文件仓储.yx"
+"时间" = "src/系统/时间系统.yx"
+"本地化" = "src/内容/本地化.yx"
+"本地控制台" = "src/接入/本地控制台.yx"
+"权限" = "src/应用/权限服务.yx"
+"死亡" = "src/系统/死亡系统.yx"
+"消息" = "src/消息/消息协议.yx"
+"消息渲染" = "src/消息/消息渲染.yx"
+"物品" = "src/系统/物品系统.yx"
+"状态" = "src/系统/状态系统.yx"
+"空间" = "src/系统/空间系统.yx"
+"系统" = "src/系统/系统注册表.yx"
+"组件" = "src/组件/组件注册表.yx"
+"虚拟时钟" = "src/测试支持/虚拟时钟.yx"
+"装备" = "src/系统/装备系统.yx"
+"角色" = "src/应用/角色服务.yx"
+"账户" = "src/应用/账户服务.yx"
+"通用组件" = "src/组件/通用组件.yx"
+"频道" = "src/应用/频道服务.yx"
+"默认" = "src/言域.yx"
+
+[[package]]
+id = "言库@0.1.0#6ff69da63b70-d1e7eada94366336"
+name = "言库"
+version = "0.1.0"
+source = "path:../yanxu-db"
+checksum = "d1e7eada94366336db2fe6782a2ff55c924da00a36a7749ce9972f1400ba04d7"
+entry = "src/言库.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言库.yx"
+
+[[package]]
+id = "言库@0.1.0#b23e624e7307-d1e7eada94366336"
+name = "言库"
+version = "0.1.0"
+source = "path:vendor/yanxu-db"
+checksum = "d1e7eada94366336db2fe6782a2ff55c924da00a36a7749ce9972f1400ba04d7"
+entry = "src/言库.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言库.yx"
+
+[[package]]
+id = "言录@0.1.0#f6492911912a-0bbfddea3996dcad"
+name = "言录"
+version = "0.1.0"
+source = "path:vendor/yanxu-log"
+checksum = "0bbfddea3996dcad69bf0d8232ec3744bedbb42677e5697c1993b0378747ce3c"
+entry = "src/言录.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+"言据" = "言据@1.1.2#5584cec81232-cfc64b2d561cc384"
+
+[package.exports]
+"默认" = "src/言录.yx"
+
+[[package]]
+id = "言据@1.1.2#5584cec81232-cfc64b2d561cc384"
+name = "言据"
+version = "1.1.2"
+source = "path:../yanju"
+checksum = "cfc64b2d561cc3849e4da3a5f2cbee18465832ebf76e9873caec96ec476225db"
+entry = "src/言据.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言据.yx"
+
+[[package]]
+id = "言据@1.1.2#94caaaac9145-cfc64b2d561cc384"
+name = "言据"
+version = "1.1.2"
+source = "path:vendor/yanju"
+checksum = "cfc64b2d561cc3849e4da3a5f2cbee18465832ebf76e9873caec96ec476225db"
+entry = "src/言据.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言据.yx"
+
+[[package]]
+id = "言据@1.1.2#9680ed0645ca-cfc64b2d561cc384"
+name = "言据"
+version = "1.1.2"
+source = "path:../../vendor/yanju"
+checksum = "cfc64b2d561cc3849e4da3a5f2cbee18465832ebf76e9873caec96ec476225db"
+entry = "src/言据.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言据.yx"
+
+[[package]]
+id = "言时@0.1.0#b9fbd27ff144-9bdaf804be77c7ce"
+name = "言时"
+version = "0.1.0"
+source = "path:../yanxu-datetime"
+checksum = "9bdaf804be77c7cee2cf627a50dbdc109734e16fcbfdfb64f994329a346f8637"
+entry = "src/言时.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言时.yx"
+
+[[package]]
+id = "言时@0.1.0#d4430e6965f8-9bdaf804be77c7ce"
+name = "言时"
+version = "0.1.0"
+source = "path:vendor/yanxu-datetime"
+checksum = "9bdaf804be77c7cee2cf627a50dbdc109734e16fcbfdfb64f994329a346f8637"
+entry = "src/言时.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言时.yx"
+
+[[package]]
+id = "言舟@0.1.0#52759d929bc0-0e94ade14f725c84"
+name = "言舟"
+version = "0.1.0"
+source = "path:vendor/yanxu-sqlite"
+checksum = "0e94ade14f725c8485af228a54653d4472fb0b72c9c1e45f3af03cf2e02be215"
+entry = "src/言舟.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+"言库" = "言库@0.1.0#6ff69da63b70-d1e7eada94366336"
+
+[package.exports]
+"默认" = "src/言舟.yx"
+
+[[package]]
+id = "言试@0.1.0#5cd5c1182384-c31c8fc47f4634d8"
+name = "言试"
+version = "0.1.0"
+source = "path:../../vendor/yanxu-test"
+checksum = "c31c8fc47f4634d87f054efc6cad5f63ef19cd387c80e8f609684d7914224518"
+entry = "src/言试.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+"言时" = "言时@0.1.0#b9fbd27ff144-9bdaf804be77c7ce"
+
+[package.exports]
+"默认" = "src/言试.yx"
+
+[[package]]
+id = "言验@0.1.0#2335d12a7c33-fc369136b1061f39"
+name = "言验"
+version = "0.1.0"
+source = "path:vendor/yanxu-validate"
+checksum = "fc369136b1061f39485175e88ee1de1d740c35134e095d2cd34e01c3a955b094"
+entry = "src/言验.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.6"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言验.yx"

@@ -45,6 +45,28 @@ finally {
     Pop-Location
 }
 
+$gameRoot = Join-Path $root 'examples/青石镇'
+Push-Location -LiteralPath $gameRoot
+try {
+    yanxu 包 锁 .
+    if ($LASTEXITCODE -ne 0) { throw '青石镇依赖锁定失败' }
+    yanxu tools/生成击杀结算夹具.yx
+    if ($LASTEXITCODE -ne 0) { throw '青石镇击杀结算夹具生成失败' }
+    git diff --exit-code -- tests/fixtures/击杀结算.json
+    if ($LASTEXITCODE -ne 0) { throw '青石镇击杀结算夹具未重新生成' }
+    yanxu 试 tests --json
+    if ($LASTEXITCODE -ne 0) { throw '青石镇规格测试失败' }
+    yanxu 兼容 tests --json
+    if ($LASTEXITCODE -ne 0) { throw '青石镇双执行器兼容测试失败' }
+}
+finally {
+    Pop-Location
+}
+
+$consoleState = ".yanxu/verify-console-$([Guid]::NewGuid().ToString('N')).json"
+yanxu 包 运行 . -- 控制台 --命令 '退出' --存档 $consoleState --json examples/青石镇
+if ($LASTEXITCODE -ne 0) { throw '默认预算本地控制台运行失败' }
+
 yanxu tools/言域.yx -- 内容检查 --行为 言域:技能行为/伤害 --行为 言域:计划行为/刷新 --行为 言域:AI行为/敌对近战 examples/青石镇/内容
 if ($LASTEXITCODE -ne 0) { throw '青石镇内容检查失败' }
 
@@ -52,6 +74,32 @@ $verifyDirectory = Join-Path $root '.yanxu/verify'
 New-Item -ItemType Directory -Force -Path $verifyDirectory | Out-Null
 yanxu --max-steps 20000000 tools/言域.yx -- 构建 --行为 言域:技能行为/伤害 --行为 言域:计划行为/刷新 --行为 言域:AI行为/敌对近战 --输出 "$verifyDirectory/青石镇世界.yj" --覆盖 examples/青石镇/内容
 if ($LASTEXITCODE -ne 0) { throw '青石镇内容制品构建失败' }
+
+$builtWorld = Join-Path $verifyDirectory '青石镇世界.yj'
+$committedWorld = Join-Path $gameRoot '世界.yj'
+if ((Get-FileHash -Algorithm SHA256 -LiteralPath $builtWorld).Hash -ne (Get-FileHash -Algorithm SHA256 -LiteralPath $committedWorld).Hash) {
+    throw '青石镇世界制品未按当前内容重新生成'
+}
+
+$runtimeDirectory = Join-Path $verifyDirectory ("runtime-$([Guid]::NewGuid().ToString('N'))")
+yanxu --max-steps 20000000 tools/构建青石镇运行时.yx -- $builtWorld $runtimeDirectory
+if ($LASTEXITCODE -ne 0) { throw '青石镇运行时分片构建失败' }
+
+function Get-TreeManifest([string]$directory) {
+    $base = [System.IO.Path]::GetFullPath($directory)
+    @(Get-ChildItem -LiteralPath $base -Recurse -File | ForEach-Object {
+        $relative = [System.IO.Path]::GetRelativePath($base, $_.FullName).Replace('\', '/')
+        $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $_.FullName).Hash.ToLowerInvariant()
+        "$relative`t$hash"
+    } | Sort-Object)
+}
+
+$committedRuntime = Join-Path $gameRoot '运行时世界'
+$runtimeDifference = Compare-Object -ReferenceObject (Get-TreeManifest $committedRuntime) -DifferenceObject (Get-TreeManifest $runtimeDirectory)
+if ($runtimeDifference) {
+    $runtimeDifference | Format-Table | Out-String | Write-Host
+    throw '青石镇运行时分片未按当前世界制品重新生成'
+}
 
 yanxu 编 . -o build --release
 if ($LASTEXITCODE -ne 0) { throw '构建失败' }
