@@ -78,8 +78,12 @@ jobs:
           Invoke-WebRequest "$base/${{ matrix.sqlite_asset }}" -OutFile $archive
           $size = (Get-Item -LiteralPath $archive).Length
           if ($size -ne ${{ matrix.sqlite_size }}) { throw "SQLite制品字节数不一致：$size" }
-          $bytes = [System.IO.File]::ReadAllBytes($archive)
-          $actual = [System.Convert]::ToHexString([System.Security.Cryptography.SHA3_256]::HashData($bytes)).ToLowerInvariant()
+          if ($IsMacOS) {
+            $actual = (& python3 -c 'import hashlib, sys; print(hashlib.sha3_256(open(sys.argv[1], "rb").read()).hexdigest())' $archive).Trim()
+          } else {
+            $bytes = [System.IO.File]::ReadAllBytes($archive)
+            $actual = [System.Convert]::ToHexString([System.Security.Cryptography.SHA3_256]::HashData($bytes)).ToLowerInvariant()
+          }
           if ($actual -ne '${{ matrix.sqlite_sha3 }}') { throw "SQLite制品 SHA3-256 不一致：$actual" }
           Expand-Archive $archive $directory -Force
           $program = Join-Path $directory '${{ matrix.sqlite_program }}'

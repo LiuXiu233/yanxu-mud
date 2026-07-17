@@ -48,8 +48,9 @@ finally {
 yanxu tools/言域.yx -- 内容检查 examples/青石镇/内容
 if ($LASTEXITCODE -ne 0) { throw '青石镇内容检查失败' }
 
-New-Item -ItemType Directory -Force -Path dist | Out-Null
-yanxu --max-steps 20000000 tools/言域.yx -- 构建 --输出 dist/青石镇世界.yj --覆盖 examples/青石镇/内容
+$verifyDirectory = Join-Path $root '.yanxu/verify'
+New-Item -ItemType Directory -Force -Path $verifyDirectory | Out-Null
+yanxu --max-steps 20000000 tools/言域.yx -- 构建 --输出 "$verifyDirectory/青石镇世界.yj" --覆盖 examples/青石镇/内容
 if ($LASTEXITCODE -ne 0) { throw '青石镇内容制品构建失败' }
 
 yanxu 编 . -o build --release
