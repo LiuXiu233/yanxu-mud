@@ -4,6 +4,14 @@
 
 ## [未发布]
 
+## [0.4.1] - 2026-07-17
+
+### 修复
+
+- 从干净克隆生成外部消费者路径依赖锁，避免本地忽略制品污染包摘要。
+- macOS 使用 Python 标准库计算 SQLite 官方制品 SHA3-256，绕开平台不支持的 .NET 实现。
+- 本地验证制品写入言序规范排除的 `.yanxu/verify`，重复验证不再使路径依赖锁失效。
+
 ## [0.4.0] - 2026-07-17
 
 ### 新增
@@ -66,7 +74,8 @@
 - 跨平台 CI、发布和安全检查基线。
 - 架构、入门、贡献、安全和兼容文档。
 
-[未发布]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.4.0...HEAD
+[未发布]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.1.0...v0.2.0
