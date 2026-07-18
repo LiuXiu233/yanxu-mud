@@ -4,6 +4,30 @@
 
 ## [未发布]
 
+## [0.7.0] - 2026-07-18
+
+### 新增
+
+- 严格区分连接、会话、账户、角色与实体的会话服务，支持安全随机恢复令牌、HMAC-SHA-256 摘要、恢复轮换、过期、角色独占、游客模式、输入限流、有界输出队列和无秘密审计投影。
+- 统一接入网关规范 Web JSON 与 Telnet 行请求，提供能力协商、登录、游客、恢复、角色选择、命令、状态和退出，并保持请求编号与结构化消息。
+- UTF-8 Telnet 状态机、NAWS 和字符集协商、多字节退格、NVT 输出编码，以及有读取、超时和背压预算的真实回环 TCP 服务器。
+- RFC 6455 WebSocket 握手、便携 SHA-1/Base64、客户端掩码、分片文本、Ping/Pong、关闭与 UTF-8/大小限制；增量 HTTP 升级读取保留同批首帧字节。
+- HTTP 健康、服务器、在线、登录、内容、WebSocket 发现、热重载、快照、日志和诊断端点，以及带管理 Bearer 拒绝默认值的服务组合。
+- 响应式青石镇浏览器客户端，支持直接 WebSocket 登录、游客进入、恢复令牌重连、命令历史、安全 DOM 消息渲染、地图和状态视图。
+- 青石镇独立 HTTP、WebSocket 与 Telnet 进程模式，环境密钥边界、轻量存档、真实游戏事件查询和统一根 CLI 选项。
+- `包:言域/会话`、接入网关、Telnet/WebSocket 协议与服务器、HTTP 升级和 HTTP 管理公共导出，以及外部消费者契约。
+
+### 安全
+
+- WebSocket 使用精确回环 Origin allowlist 并拒绝缺失 Origin；HTTP 静态资源拒绝路径穿越并携带 CSP、`nosniff`、Referrer Policy 和 `no-store`。
+- Telnet 不再宣告未实现的服务端回显，客户端保持本地回显；协议洪泛、畸形 UTF-8、超长消息和输出过载均有稳定关闭路径。
+- 登录密钥、恢复令牌和 Authorization 不进入失败响应、服务器投影或会话审计；缺少管理令牌时全部管理操作拒绝。
+
+### 验证
+
+- 新增默认 1,000,000 步预算的真实回环端到端脚本，分别启动有限 Telnet、WebSocket 和 HTTP 进程并完成游客会话、游戏命令、退出、健康检查与安全首部验证。
+- Windows、Linux 与 macOS CI 运行网络端到端、协议安全边界、HTTP 静态/CSP/穿越、青石镇服务器组合和公共 API 消费者规格。
+
 ## [0.5.0] - 2026-07-17
 
 ### 新增
@@ -119,7 +143,8 @@
 - 跨平台 CI、发布和安全检查基线。
 - 架构、入门、贡献、安全和兼容文档。
 
-[未发布]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.5.0...HEAD
+[未发布]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.5.0...v0.7.0
 [0.5.0]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/LiuXiu233/yanxu-mud/compare/v0.3.0...v0.4.0

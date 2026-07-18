@@ -1,0 +1,77 @@
+引「../../src/接入/WebSocket协议.yx」为 WebSocket；
+
+引「包:yanxu-http」为 HTTP；
+
+引「标准:字节」为 字节；
+
+引「标准:测试」为 测试；
+
+引「标准:文字」为 文字；
+
+法 含片（原文：文，片：文）：理 则
+    归 （长度（文字.分割（原文，片）） 大于 1）；
+终
+
+法 应抛（操作：法，代码：文）：空 则
+    令 命中：理 为 假；
+    试 则
+        操作（）；
+    救 所误 则
+        置 命中 为 文字.始于（所误.消息，代码）；
+    终
+    测试.断言（命中，「应拒绝危险的 WebSocket 配置」）；
+终
+
+测试.相等（WebSocket.Base64编码（字节.从文字（「Hello」）），「SGVsbG8=」）；
+
+测试.相等（字节.转文字（WebSocket.Base64解码（「SGVsbG8=」）），「Hello」）；
+
+测试.相等（WebSocket.Base64编码（WebSocket.SHA1（字节.从文字（「abc」））），「qZk+NkcGgWq6PiVxeFDCbJzQ2J0=」）；
+
+测试.相等（WebSocket.计算接受值（「dGhlIHNhbXBsZSBub25jZQ==」），「s3pPLMBiTxaQ9kYGzzhZRbK+xOo=」）；
+
+定 请求 为 HTTP.解析请求头（「GET /ws HTTP/1.1\nHost: 127.0.0.1:8080\nUpgrade: websocket\nConnection: keep-alive, Upgrade\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\nSec-WebSocket-Version: 13\nSec-WebSocket-Protocol: other, yanyu.v1\nOrigin: http://127.0.0.1:8080」）；
+
+定 已握手：典 为 WebSocket.握手（请求，{「允许来源」：【「http://127.0.0.1:8080」】}）；
+
+测试.相等（已握手【「成功」】，真）；
+
+测试.相等（已握手【「状态码」】，101）；
+
+测试.相等（已握手【「子协议」】，「yanyu.v1」）；
+
+定 响应文：文 为 字节.转文字（已握手【「响应」】）；
+
+定 状态行：文 为 「HTTP/1.1 101 Switching Protocols\n」；
+
+测试.相等（响应文【0：长度（状态行）】，状态行）；
+
+测试.断言（含片（响应文，「Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=\n」），「握手响应必须含 RFC 接受值」）；
+
+测试.断言（含片（响应文，「Sec-WebSocket-Protocol: yanyu.v1\n」），「握手响应必须确认子协议」）；
+
+定 来源拒绝：典 为 WebSocket.握手（请求，{「允许来源」：【「https://game.example」】}）；
+
+测试.相等（来源拒绝【「状态码」】，403）；
+
+测试.相等（来源拒绝【「代码」】，WebSocket.来源错误）；
+
+定 版本请求 为 HTTP.解析请求头（「GET /ws HTTP/1.1\nHost: localhost\nUpgrade: websocket\nConnection: Upgrade\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\nSec-WebSocket-Version: 12」）；
+
+定 版本拒绝：典 为 WebSocket.握手（版本请求，{「允许无来源」：真}）；
+
+测试.相等（版本拒绝【「状态码」】，426）；
+
+测试.断言（含片（字节.转文字（版本拒绝【「响应」】），「Sec-WebSocket-Version: 13」），「版本拒绝须声明版本 13」）；
+
+定 坏键请求 为 HTTP.解析请求头（「GET /ws HTTP/1.1\nHost: localhost\nUpgrade: websocket\nConnection: Upgrade\nSec-WebSocket-Key: invalid\nSec-WebSocket-Version: 13」）；
+
+定 坏键：典 为 WebSocket.握手（坏键请求，{「允许无来源」：真}）；
+
+测试.相等（坏键【「状态码」】，400）；
+
+法 首部注入配置（） 则
+    WebSocket.握手（请求，{「允许来源」：【「http://127.0.0.1:8080」】，「子协议」：【「yanyu.v1\nX-Evil: yes」】}）；
+终
+
+应抛（首部注入配置，WebSocket.子协议错误）；

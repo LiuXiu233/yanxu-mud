@@ -1,0 +1,41 @@
+引「包:言域/接入网关」为 接入网关；
+
+引「包:言域/Telnet协议」为 Telnet协议；
+
+引「包:言域/Telnet服务器」为 Telnet服务器；
+
+引「包:言域/WebSocket协议」为 WebSocket协议；
+
+引「包:言域/WebSocket服务器」为 WebSocket服务器；
+
+引「包:言域/HTTP升级」为 HTTP升级；
+
+引「包:言域/HTTP管理」为 HTTP管理；
+
+引「标准:字节」为 字节；
+
+引「标准:测试」为 测试；
+
+测试.相等（接入网关.协议名称，「言域/接入消息」）；
+
+测试.相等（接入网关.默认配置（）【「允许游客」】，假）；
+
+测试.相等（Telnet协议.协议名称，「言域/Telnet」）；
+
+定 Telnet状态 为 Telnet协议.Telnet连接状态（{}）；
+
+测试.相等（字节.长度（Telnet状态.初始协商（）），12）；
+
+测试.相等（Telnet服务器.默认配置（）【「每次接收字节」】，8192）；
+
+测试.相等（WebSocket协议.协议名称，「言域/WebSocket」）；
+
+测试.相等（WebSocket协议.计算接受值（「dGhlIHNhbXBsZSBub25jZQ==」），「s3pPLMBiTxaQ9kYGzzhZRbK+xOo=」）；
+
+测试.相等（WebSocket服务器.默认配置（）【「最大首部字节」】，16384）；
+
+测试.相等（HTTP升级.协议名称，「言域/HTTP升级读取」）；
+
+测试.断言（（字节.转文字（HTTP升级.错误响应（「400」，「Bad Request」，「Bad Request」））【0：12】 等于 「HTTP/1.1 400」），「HTTP 升级错误响应必须可供外部服务器复用」）；
+
+测试.相等（HTTP管理.默认配置（）【「客户端根」】，「examples/青石镇/web」）；

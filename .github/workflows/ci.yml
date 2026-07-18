@@ -131,6 +131,9 @@ jobs:
       - name: 默认预算本地控制台
         shell: bash
         run: yanxu 包 运行 . -- 控制台 --命令 退出 --存档 .yanxu/ci-console.json --json examples/青石镇
+      - name: 默认预算实际网络端到端
+        shell: pwsh
+        run: ./scripts/network-e2e.ps1 -Yanxu (Get-Command yanxu).Source
       - name: 示例内容与制品
         shell: bash
         run: |

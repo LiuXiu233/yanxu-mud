@@ -1,7 +1,7 @@
 [包]
 格式 = 2
 名称 = "言域"
-版本 = "0.5.0"
+版本 = "0.7.0"
 言序 = ">=1.1.12"
 入口 = "tools/言域.yx"
 说明 = "以言序组织游戏逻辑、以言据描述世界内容的现代中文 MUD 游戏引擎"
@@ -17,6 +17,7 @@
 言库 = { 包 = "言库", 路径 = "vendor/yanxu-db", 版 = "=0.1.0" }
 言舟 = { 包 = "言舟", 路径 = "vendor/yanxu-sqlite", 版 = "=0.1.0" }
 言枢 = { 包 = "yanxu-web", 路径 = "vendor/yanxu-web", 版 = "=0.2.1" }
+yanxu-http = { 包 = "yanxu-http", 路径 = "vendor/yanxu-http", 版 = "=0.1.1" }
 
 [开发依赖]
 言试 = { 包 = "言试", 路径 = "vendor/yanxu-test", 版 = "=0.1.0" }
@@ -44,6 +45,14 @@ UDP绑定 = []
 权限 = "src/应用/权限服务.yx"
 频道 = "src/应用/频道服务.yx"
 本地控制台 = "src/接入/本地控制台.yx"
+会话 = "src/会话/会话服务.yx"
+接入网关 = "src/接入/接入网关.yx"
+Telnet协议 = "src/接入/Telnet协议.yx"
+Telnet服务器 = "src/接入/Telnet服务器.yx"
+WebSocket协议 = "src/接入/WebSocket协议.yx"
+WebSocket服务器 = "src/接入/WebSocket服务器.yx"
+HTTP升级 = "src/接入/HTTP升级.yx"
+HTTP管理 = "src/接入/HTTP管理.yx"
 实体 = "src/实体/实体.yx"
 组件 = "src/组件/组件注册表.yx"
 通用组件 = "src/组件/通用组件.yx"

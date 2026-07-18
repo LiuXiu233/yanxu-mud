@@ -40,6 +40,7 @@ yanxu 兼容 tests --json
 )
 console_state=".yanxu/verify-console-$$.json"
 yanxu 包 运行 . -- 控制台 --命令 退出 --存档 "$console_state" --json examples/青石镇
+pwsh -NoProfile -File scripts/network-e2e.ps1 -Yanxu "$(command -v yanxu)"
 yanxu tools/言域.yx -- 内容检查 --行为 言域:技能行为/伤害 --行为 言域:计划行为/刷新 --行为 言域:AI行为/敌对近战 examples/青石镇/内容
 mkdir -p .yanxu/verify
 yanxu --max-steps 20000000 tools/言域.yx -- 构建 --行为 言域:技能行为/伤害 --行为 言域:计划行为/刷新 --行为 言域:AI行为/敌对近战 --输出 .yanxu/verify/青石镇世界.yj --覆盖 examples/青石镇/内容

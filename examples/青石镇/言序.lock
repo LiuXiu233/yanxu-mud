@@ -1,10 +1,10 @@
 lock_version = 2
-manifest_checksum = "cc89c984a5d689207ceac1a01da8cec1bd6d4103bb9f63a39e3f33a4cbe6983f"
+manifest_checksum = "39092d4ca75e1d912b9a6a8eeb9355a48b6c78780175275b4f565cbd23ff5b3c"
 target = "x86_64-pc-windows-msvc"
 generator = "1.1.12"
 
 [root_dependencies]
-"言域" = "言域@0.5.0#e526f172db95-6849ffdf7108b888"
+"言域" = "言域@0.7.0#e526f172db95-3524bfaeeb714b38"
 "言据" = "言据@1.1.2#9680ed0645ca-cfc64b2d561cc384"
 
 [root_dev_dependencies]
@@ -24,6 +24,21 @@ minimum_yanxu = ">=1.1.5"
 
 [package.exports]
 "默认" = "src/言序HTML.yx"
+
+[[package]]
+id = "yanxu-http@0.1.1#411aeea93d7d-53850478fab458df"
+name = "yanxu-http"
+version = "0.1.1"
+source = "path:vendor/yanxu-http"
+checksum = "53850478fab458df35a8631bd2427c37776780984b70086bd2462263c5ab8c73"
+entry = "src/言序HTTP.yx"
+target = "x86_64-pc-windows-msvc"
+minimum_yanxu = ">=1.1.5"
+
+[package.dependencies]
+
+[package.exports]
+"默认" = "src/言序HTTP.yx"
 
 [[package]]
 id = "yanxu-http@0.1.1#aa4c50606c43-53850478fab458df"
@@ -74,16 +89,17 @@ minimum_yanxu = ">=1.1.6"
 "默认" = "src/言令.yx"
 
 [[package]]
-id = "言域@0.5.0#e526f172db95-6849ffdf7108b888"
+id = "言域@0.7.0#e526f172db95-3524bfaeeb714b38"
 name = "言域"
-version = "0.5.0"
+version = "0.7.0"
 source = "path:../.."
-checksum = "6849ffdf7108b888ae4f1fab29ac5ec8127d86e66203f898121ff5b3f6ca8b00"
+checksum = "3524bfaeeb714b38503641e0ae885e3fad5c6d0b2a49245d1e1b81b3b56ed18d"
 entry = "tools/言域.yx"
 target = "x86_64-pc-windows-msvc"
 minimum_yanxu = ">=1.1.12"
 
 [package.dependencies]
+yanxu-http = "yanxu-http@0.1.1#411aeea93d7d-53850478fab458df"
 "言令" = "言令@0.1.0#a7ac7754fa1a-b02dbe083f7b645b"
 "言库" = "言库@0.1.0#b23e624e7307-d1e7eada94366336"
 "言录" = "言录@0.1.0#f6492911912a-0bbfddea3996dcad"
@@ -95,13 +111,20 @@ minimum_yanxu = ">=1.1.12"
 
 [package.exports]
 AI = "src/系统/AI系统.yx"
+"HTTP升级" = "src/接入/HTTP升级.yx"
+"HTTP管理" = "src/接入/HTTP管理.yx"
 "SQLite仓储" = "src/持久化/SQLite仓储.yx"
+"Telnet协议" = "src/接入/Telnet协议.yx"
+"Telnet服务器" = "src/接入/Telnet服务器.yx"
+"WebSocket协议" = "src/接入/WebSocket协议.yx"
+"WebSocket服务器" = "src/接入/WebSocket服务器.yx"
 "世界事务" = "src/世界/世界事务.yx"
 "世界循环" = "src/世界/世界循环.yx"
 "事件" = "src/事件/事件总线.yx"
 "事件日志" = "src/持久化/事件日志.yx"
 "仓储" = "src/持久化/仓储协议.yx"
 "任务" = "src/系统/任务系统.yx"
+"会话" = "src/会话/会话服务.yx"
 "内存仓储" = "src/持久化/内存仓储.yx"
 "内容Schema" = "src/内容/Schema注册表.yx"
 "内容加载" = "src/内容/文件加载器.yx"
@@ -124,6 +147,7 @@ AI = "src/系统/AI系统.yx"
 "战斗" = "src/系统/战斗系统.yx"
 "技能" = "src/系统/技能系统.yx"
 "掉落" = "src/系统/掉落系统.yx"
+"接入网关" = "src/接入/接入网关.yx"
 "数据迁移" = "src/持久化/数据迁移.yx"
 "文件仓储" = "src/持久化/文件仓储.yx"
 "时间" = "src/系统/时间系统.yx"

@@ -67,6 +67,9 @@ $consoleState = ".yanxu/verify-console-$([Guid]::NewGuid().ToString('N')).json"
 yanxu 包 运行 . -- 控制台 --命令 '退出' --存档 $consoleState --json examples/青石镇
 if ($LASTEXITCODE -ne 0) { throw '默认预算本地控制台运行失败' }
 
+& "$PSScriptRoot/network-e2e.ps1" -Yanxu (Get-Command yanxu).Source
+if ($LASTEXITCODE -ne 0) { throw '默认预算实际网络端到端失败' }
+
 yanxu tools/言域.yx -- 内容检查 --行为 言域:技能行为/伤害 --行为 言域:计划行为/刷新 --行为 言域:AI行为/敌对近战 examples/青石镇/内容
 if ($LASTEXITCODE -ne 0) { throw '青石镇内容检查失败' }
 
